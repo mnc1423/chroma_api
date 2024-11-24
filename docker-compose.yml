@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  chroma-api:
+    build: .
+    env_file: .env
+    # command: uvicorn main:app --port 8080 --host 0.0.0.0 --reload
+    command: tail -f /dev/null 
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./:/app
+    networks:
+      - mattermost
+
+networks:
+  mattermost:
+    external: true
